@@ -1,6 +1,6 @@
 % ================================
 % Demo of Cotan Laplace Operator
-% This demo function compute cotangent weighted laplace operator 
+% This demo function computes cotangent weighted laplace operator 
 % and visualize its eigenvalue and eigenvectors
 %
 % Reference:
