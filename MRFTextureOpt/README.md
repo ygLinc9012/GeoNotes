@@ -1,4 +1,5 @@
-# DerekToolBox
-Permission is granted for anyone to copy, modify, or distribute the code for any purpose. As the codes were written for research purposes only, they have not been optimized or tested to the degree that would be advisable in any important application. 
+# Markov Random Field Energy for Texture Optimization
+This method is based on the section 3 of the cited paper. Markov Random Field energy model is wildely used for texture synthesis. This demo code is a simple implementation of the texture synthesis process. To make it easy to understand, it is implemented for gray-scale images.
 
-1. Textuer Optimization using Markov Random field Energy
+Reference:
+1. Kwatra, Vivek, et al. "Texture optimization for example-based synthesis." ACM Transactions on Graphics (ToG) 24.3 (2005): 795-802.
