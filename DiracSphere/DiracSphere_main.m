@@ -2,7 +2,7 @@
 % Demo of computing Dirac sphere
 % This method is based on the section 5 of the following paper:
 %
-% Crane, Keenan, Ulrich Pinkall, and Peter Schröder. 
+% Crane, Keenan, Ulrich Pinkall, and Peter SchrÃ¶der. 
 % "Spin transformations of discrete surfaces." 
 % ACM Transactions on Graphics (TOG). Vol. 30. No. 4. ACM, 2011.
 % ================================
