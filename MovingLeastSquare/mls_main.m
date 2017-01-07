@@ -1,3 +1,12 @@
+% ================================
+% Demo of Moving Least Square
+% This method is based on the following paper:
+%
+% Kolluri, Ravikrishna. 
+% "Provably good moving least squares." 
+% ACM Transactions on Algorithms (TALG) 4.2 (2008): 18.
+% ================================
+
 clear all; close all; clc;
 
 % sigma - control how detailed it is for the MLS approximation 
