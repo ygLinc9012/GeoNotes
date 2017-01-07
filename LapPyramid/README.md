@@ -3,3 +3,4 @@ Laplacian Image Pyramid is a technique for encoding an image into multiple scale
 
 Reference:  
 Burt, Peter, and Edward Adelson. "The Laplacian pyramid as a compact image code." IEEE Transactions on communications 31.4 (1983): 532-540.
+![Pyr](./LapPyr.png)
