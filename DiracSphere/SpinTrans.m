@@ -1,59 +1,42 @@
 function Vnew = SpinTrans(F,V,lambda)
-% This function eats the triangular mesh and the Dirac eigenvector and 
-% outputs the vertices of Dirac sphere
-%
-% Input:
-% F: 3 by N face matrix
-% V: 3 by M vertex matrix
-% lambda: eigenvector of Dirac Operator
-% 
-% Output:
-% Vnew: new vertex positions
-% 
-% This code is adapted from Dr. Keenan Crane's website found here:
-% http://www.hakenberg.de/diffgeo/differential_geometry.htm#Spin
+% Build quaternionic laplace
+Ltemp = CotanLaplace(V, F);
+[r, c, val] = find(Ltemp);
+R = [4*r-3 4*r-2 4*r-1 4*r];
+R = reshape(R',[4*size(R,1),1]);
+C = [4*c-3 4*c-2 4*c-1 4*c];
+C = reshape(C',[4*size(C,1),1]);
+val = [val val val val];
+val = reshape(val',[4*size(val,1),1]);
+L = sparse(R,C,val,size(V,1)*4, size(V,1)*4);
 
+% Build quaternionic divergence matrix
+F = F';
+V = V';
 nF = size(F,2);
 nV = size(V,2);
 plc = -3:0;
-
-L = sparse(4*nV,4*nV);
-ome=zeros(4*nV,1);
-for c1=1:nF
-  for c2=1:3
-    k0=F(mod(c2-1,3)+1,c1);
-    k1=F(mod(c2+0,3)+1,c1);
-    k2=F(mod(c2+1,3)+1,c1);
-    u1=V(:,k1)-V(:,k0);
-    u2=V(:,k2)-V(:,k0);
-    cta=dot(u1,u2) / norm( cross(u1,u2) );
-    h=jiH([cta*0.5 0 0 0]);
-    ini=[k1*4+plc  k2*4+plc];
-    L(ini,ini)=L(ini,ini)+[ h -h;-h h];
-    if k1>k2
-      k3=k1; k1=k2; k2=k3; % swap
+diver = zeros(4*nV,1);    
+for i = 1:nF
+    for j = 1:3
+        face0 = F(mod(j-1,3)+1,i);
+        face1 = F(mod(j+0,3)+1,i);
+        face2 = F(mod(j+1,3)+1,i);
+        vec1 = V(:,face1)-V(:,face0);
+        vec2 = V(:,face2)-V(:,face0);
+        cotan = dot(vec1,vec2) / norm( cross(vec1,vec2) );
+        lambda1 = quat(lambda(face1*4 + plc));
+        lambda2 = quat(lambda(face2*4 + plc));
+        edgVec = quat([0;V(:,face2)-V(:,face1)]);
+        tilda = lambda1'*edgVec*lambda1/3 + lambda1'*edgVec*lambda2/6 + lambda2'*edgVec*lambda1/6 + lambda2'*edgVec*lambda2/3;
+        diver(face1*4+plc,1) = diver(face1*4+plc,1) - cotan*tilda(:,1)/2;
+        diver(face2*4+plc,1) = diver(face2*4+plc,1) + cotan*tilda(:,1)/2;
     end
-    lm1=jiH(lambda(k1*4+plc));
-    lm2=jiH(lambda(k2*4+plc));
-    edv=jiH([0;V(:,k2)-V(:,k1)]);
-    til=lm1'*edv*lm1/3 + lm1'*edv*lm2/6 + lm2'*edv*lm1/6 + lm2'*edv*lm2/3;
-    ome(k1*4+plc,1)=ome(k1*4+plc,1)-cta*til(:,1)/2;
-    ome(k2*4+plc,1)=ome(k2*4+plc,1)+cta*til(:,1)/2;
-  end
-  if ~mod(c1,500); fprintf('.'); end
+end   
+
+sol = reshape(L\diver, [4 nV]);
+temp = sum(sol.*sol, 1);
+sol = sol / sqrt(max(temp));
+Vnew = sol(2:end,:);
+Vnew = Vnew';
 end
-fprintf('\n')
-
-
-ome=L\ome;
-ome=reshape(ome,[4 nV]);
-nrm=sum(ome.*ome,1);
-ome=ome/sqrt(max(nrm));
-Vnew=ome(2:end,:);
-
-function h=jiH(pnt)
-a=pnt(1); b=pnt(2); c=pnt(3); d=pnt(4);
-h=[ a -b -c -d
-    b  a -d  c
-    c  d  a -b
-    d -c  b  a];

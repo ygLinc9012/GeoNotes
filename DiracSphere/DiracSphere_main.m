@@ -2,7 +2,7 @@
 % Demo of computing Dirac sphere
 % This method is based on the section 5 of the following paper:
 %
-% Crane, Keenan, Ulrich Pinkall, and Peter SchrÃ¶der. 
+% Crane, Keenan, Ulrich Pinkall, and Peter Schröder. 
 % "Spin transformations of discrete surfaces." 
 % ACM Transactions on Graphics (TOG). Vol. 30. No. 4. ACM, 2011.
 % ================================
@@ -57,9 +57,8 @@ i = 1;
 color = ones(size(V,1),1);
 for idx = [1 5 9 17 21 25 29 35 37]
     subplot(3,3,i)
-    Vnew = SpinTrans(F',V',real(eVec(:,idx)));
-    Vnew = Vnew';
-    trimesh(F,Vnew(:,1),Vnew(:,2),Vnew(:,3), color, 'FaceColor','interp','edgecolor','interp', 'facealpha',0.3)
+    Vnew = SpinTrans(F,V,real(eVec(:,idx)));
+    trimesh(F,Vnew(:,1),Vnew(:,2),Vnew(:,3), color, 'edgealpha', 0.4,'facealpha',0.4)
     axis equal
     axis off
     shading interp  
