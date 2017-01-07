@@ -43,7 +43,7 @@ hks = hks * scaleMat; % scale invariant heat kernel signature
 for t = 90:size(hks,2)
     clf;
     trimesh(F,V(:,1),V(:,2),V(:,3),hks(:,t));
-    view(120,10)
+    view(300,230)
     colormap jet
     axis equal
     axis off
