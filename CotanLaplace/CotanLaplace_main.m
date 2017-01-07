@@ -1,6 +1,6 @@
 % ================================
 % Demo of Cotan Laplace Operator
-% This demo function computes cotangent weighted laplace operator 
+% This demo function compute cotangent weighted laplace operator 
 % and visualize its eigenvalue and eigenvectors
 %
 % Reference:
@@ -14,7 +14,6 @@ L = CotanLaplace(V, F);
 [~, vertAreaList, ~, ~] = ComAreaAndNormal(F,V);
 Mv = sparse(size(vertAreaList,1), size(vertAreaList,1)); % mass matrix
 for idx = 1:size(vertAreaList,1)
-    %Mv = diag(vertAreaList);
     Mv(idx, idx) = vertAreaList(idx);
 end
 
@@ -39,6 +38,7 @@ for i = 1:numEigs
     colormap jet
     axis equal
     axis off
+    view(0,90)
     title(strcat('eigenvector#',int2str(i)))
 end
 
