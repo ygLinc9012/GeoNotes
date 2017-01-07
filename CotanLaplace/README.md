@@ -6,3 +6,5 @@ Reuter, Martin, Franz-Erich Wolter, and Niklas Peinecke. "Laplace–Beltrami spe
 
 Here is another nice tutorial for learning Laplace operator:  
 http://ddg.cs.columbia.edu/SGP2014/LaplaceBeltrami.pdf
+
+![mode](./eigenModes.png)
