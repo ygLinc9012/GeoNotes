@@ -7,6 +7,6 @@ The notes includes the implementation of
 - Dirac Spheres (DiracSphere)
 - Heat Kernel Signature (HeatKernelSignature)
 - Image Laplace Pyramid (LapPyramid)
+- Markov Random Field Energy for Textuer Synthesis (MRFTextureOpt)
 - Modified Dirichlet Energy operator (ModDirichlet)
 - Moving Least Squares Approximation (MovingLeastSquare)
-- Markov Random Field Energy for Textuer Synthesis (MRFTextureOpt)
