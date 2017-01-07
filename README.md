@@ -8,4 +8,5 @@ The notes includes the implementation of
 - Heat Kernel Signature (HeatKernelSignature)
 - Image Laplace Pyramid (LapPyramid)
 - Modified Dirichlet Energy operator (ModDirichlet)
+- Moving Least Squares Approximation (MovingLeastSquare)
 - Markov Random Field Energy for Textuer Synthesis (MRFTextureOpt)
