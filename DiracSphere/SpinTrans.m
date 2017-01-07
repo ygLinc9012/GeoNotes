@@ -1,4 +1,18 @@
 function Vnew = SpinTrans(F,V,lambda)
+% This function eats the triangular mesh and the Dirac eigenvector and 
+% outputs the vertices of Dirac sphere
+%
+% Input:
+% F: 3 by N face matrix
+% V: 3 by M vertex matrix
+% lambda: eigenvector of Dirac Operator
+% 
+% Output:
+% Vnew: new vertex positions
+% 
+% This code is adapted from Dr. Keenan Crane's website found here:
+% http://www.hakenberg.de/diffgeo/differential_geometry.htm#Spin
+
 % Build quaternionic laplace
 Ltemp = CotanLaplace(V, F);
 [r, c, val] = find(Ltemp);
