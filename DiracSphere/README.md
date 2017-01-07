@@ -3,3 +3,5 @@ The cited paper introduces the discretization of Dirac operator. When applying t
 
 Reference:  
 Crane, Keenan, Ulrich Pinkall, and Peter Schröder. "Spin transformations of discrete surfaces." ACM Transactions on Graphics (TOG). Vol. 30. No. 4. ACM, 2011.
+
+![diracSphere](./diracSphere.png)
