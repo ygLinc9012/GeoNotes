@@ -10,3 +10,4 @@ The notes includes the implementation of
 - Markov Random Field Energy for Textuer Synthesis (MRFTextureOpt)
 - Modified Dirichlet Energy operator (ModDirichlet)
 - Moving Least Squares Approximation (MovingLeastSquare)
+- Mesh Saliency via Spectral Processing (SpecSaliency)
